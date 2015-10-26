@@ -63,7 +63,7 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 				int rowsInserted = statement.executeUpdate();
 				System.out.println(listRegistroMonitoreoDTO.get(i).getValor());
 
-
+//
 
 			if (rowsInserted > 0) {
 				System.out.println(rowsInserted + " rows was inserted successfully!");
