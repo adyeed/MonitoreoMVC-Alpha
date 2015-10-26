@@ -60,12 +60,20 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 				statement.setDouble(4, listRegistroMonitoreoDTO.get(i).getValor());
 				statement.setInt(5, listRegistroMonitoreoDTO.get(i).getIdDispositivo());
 				statement.setInt(6, listRegistroMonitoreoDTO.get(i).getIdEstatus());
+				int rowsInserted = statement.executeUpdate();
+				System.out.println(listRegistroMonitoreoDTO.get(i).getValor());
 
-				statement.executeUpdate();
+
+
+			if (rowsInserted > 0) {
+				System.out.println(rowsInserted + " rows was inserted successfully!");
+
 			}
-
+			}
+			// conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("ERROR ---> ");
 			e.printStackTrace();
 		}
 
