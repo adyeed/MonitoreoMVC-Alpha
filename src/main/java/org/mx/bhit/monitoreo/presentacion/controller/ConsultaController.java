@@ -53,7 +53,6 @@ public class ConsultaController {
 
 	/**
 	 * @return
-	 *
 	 */
 	@SuppressWarnings("finally")
 	@RequestMapping(value = "/ports", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -91,10 +90,9 @@ public class ConsultaController {
 
 	/**
 	 * @return
-	 *
 	 */
 	@SuppressWarnings("finally")
-	@RequestMapping(value = "/registros", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/records", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public
 	@ResponseBody
 	List<RegistroMonitoreoDTO> getRegistro() {
@@ -106,10 +104,8 @@ public class ConsultaController {
 			consultaServiceImpl = new ConsultaServiceImpl();
 			regristroMaster = consultaServiceImpl.getRegistro(registroMonitoreoDTO);
 		} catch (Exception e) {
-
-			e.printStackTrace();
-			System.out.println("Error al extraer informaci�n dela nube." + e.getMessage());
-			registroMonitoreoDTO.setMensaje("Error al extraer informaci�n dela nube");
+			System.out.println("Error en lectura de registros." + e.getMessage());
+			registroMonitoreoDTO.setMensaje("ERROR en lectura de registros");
 			regristroMaster.add(registroMonitoreoDTO);
 			// TODO: handle exception
 		} finally {

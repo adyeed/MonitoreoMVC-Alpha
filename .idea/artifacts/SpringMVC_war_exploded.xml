@@ -27,6 +27,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/target/SpringMVC/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="SpringMVC/web/Web" />
+      <element id="gwt-compiler-output" facet="SpringMVC/gwt/GWT" />
     </root>
   </artifact>
 </component>

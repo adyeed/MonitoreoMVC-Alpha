@@ -31,7 +31,7 @@
 			// route for the map page
 			.when ( '/mapa' , {
 			templateUrl : 'pages/map.html' ,
-			controller  : 'GetRecordController'
+			controller  : 'MapController'
 		} )
 			// route for the map page
 			.when ( '/contacto' , {
@@ -53,46 +53,9 @@
 	} );
 
 	// Insert Record
-	app.controller ( 'InsertRecord' , function ( $scope , $interval , $http ) {
-		angular.element ( document ).ready ( function () {
 
-			$scope.callAtInterval = function () {
-				$ ( "#writeData" ).css ( "color" , "white" );
-				// console.log("INCIA PETICION");
-				$http ( {
-					method : 'POST' ,
-					url    : '/SpringMVC/rest/on'
-				} ).then ( function successCallback ( response ) {
-					if ( response.status == "200" ) {
-						console.log ( "azul" );
-						$ ( "#writeData" ).css ( "color" , "blue" );
-						// console.log(response.data.mensaje);
-						if ( response.data.mensaje == "ERROR" ) {
-							$ ( "#writeData" ).css ( "color" , "yellow" );
-							// console.log("amarillo");
-						}
-					}
-					// console.log("FIN DE PETICION");
-					$scope.data = response.data.mensaje;
-				} , function errorCallback ( response ) {
-					console.log ( "rojo" );
-					$ ( "#writeData" ).css ( "color" , "red" );
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
-					$scope.data = response.data;
-				} );
 
-			}
-
-			$interval ( function () {
-				$scope.callAtInterval ();
-			} , 3109 );
-
-		} );
-	} );
-	// ///////// Fin Insert
-
-	// Get
+// Get
 	app.controller ( 'GetRecordController' , function ( $scope , $interval , $http ) {
 		angular.element ( document ).ready ( function () {
 
@@ -105,52 +68,43 @@
 				// AJAX
 				$http ( {
 					method : 'POST' ,
-					url    : '/SpringMVC/rest/on'
+					url    : '/SpringMVC/rest/records'
 				} ).then ( function successCallback ( response ) {
 
 					if ( response.status == "200" ) {
 						$ ( "#readData" ).css ( "color" , "blue" );
 						variablesAmbientales = angular.fromJson ( response.data );
 						console.log ( variablesAmbientales.length );
+						console.log ( variablesAmbientales );
 						if ( variablesAmbientales != 0 ) {
 							var renglon =
 								    '<table class="table">' +
-								    '   <tr>' +
+								    '<tr>' +
 								    '<td>Variable</td>' +
 								    '<td>Valor</td>' +
-								    '</tr>' +
-								    '<tr>' +
-								    '<td id="idVarTemp">Var1 </td>' +
-								    '<td id="valorTemp">' + variablesAmbientales[ 0 ].valor + '</td>' +
-								    '</tr>' +
-								    '<tr>' +
-								    '<td id="idVarTemp">Var2 </td>' +
-								    '<td id="valorTemp">' + variablesAmbientales[ 1 ].valor + '</td>' +
-								    '</tr>' +
-								    '<tr>' +
-								    '<td id="idVarTemp">Var3 </td>' +
-								    '<td id="valorTemp">' + variablesAmbientales[ 2 ].valor + '</td>' +
-								    '</tr>' +
-								    '<tr>' +
-								    '<td id="idVarTemp">Var4 </td>' +
-								    '<td id="valorTemp">' + variablesAmbientales[ 3 ].valor + '</td>' +
-								    '</tr>' +
-								    '<tr>' +
-								    '<td id="idVarTemp">Var5 </td>' +
-								    '<td id="valorTemp">' + variablesAmbientales[ 4 ].valor + '</td>' +
-								    '</tr>' +
-								    '</table>';
+								    '</tr>';
+							$.each ( variablesAmbientales , function ( i , item ) {
+								renglon +=
+									'<tr>' +
+									'<td id="idVarTemp">' + nombreVariable ( variablesAmbientales[ i ].variableID ) + ' </td>' +
+									'<td id="valorTemp">' + variablesAmbientales[ i ].valor + '</td>' +
+									'</tr>';
+							} )
+
+							renglon += '</table>';
+							console.log ( renglon );
 							$ ( "#Variables" ).html ( renglon );
 
 						} else {
 							$ ( "#readData" ).css ( "color" , "yellow" );
-							//$ ( "#Variables" ).html ( variablesAmbientales.length );
+							// $ ( "#Variables" ).html (
+							// variablesAmbientales.length );
 						}
 					}
 					$scope.data = response.data.mensaje;
 				} , function errorCallback ( response ) {
 					$ ( "#Variables" ).html ( "ERROR" );
-					console.log ( 'ERROR ---- No hay comunicaci�n con el API.' );
+					console.log ( 'ERROR ---- No hay comunicaciïón con el API.' );
 					$ ( "#readData" ).css ( "color" , "red" );
 					$scope.data = response.data;
 				} );
@@ -158,26 +112,49 @@
 
 			$interval ( function () {
 				$scope.callAtInterval ();
-			} , 5000 );
+			} , 3000 );
 
 		} );
 	} );
 	// ////// Fin de Get
+	function nombreVariable ( idVariable ) {
 
+		var auxIdVariable = idVariable;
+		var nombreVariable;
+		if ( auxIdVariable == '1' ) {
+			nombreVariable = 'Temperatura'
+		} else if ( auxIdVariable == '2' ) {
+			nombreVariable = 'Humedad'
+		} else if ( auxIdVariable == '3' ) {
+			nombreVariable = 'CO'
+		} else if ( auxIdVariable == '4' ) {
+			nombreVariable = 'CO2'
+		} else if ( auxIdVariable == '5' ) {
+			nombreVariable = 'OOOO3'
+		}
+		return nombreVariable;
+	}
 
-	/**
-	 * FECHA
-	 */
+	//FECHA
 	var monthNames = [
-		"January" , "February" , "March" ,
-		"April" , "May" , "June" , "July" ,
-		"August" , "September" , "October" ,
-		"November" , "December"
+		"Enero" ,
+		"Febrero" ,
+		"Marzo" ,
+		"Abril" ,
+		"Mayo" ,
+		"Junio" ,
+		"Julio" ,
+		"Augosto" ,
+		"Septiembere" ,
+		"Octubre" ,
+		"Noviembre" ,
+		"Deciembre"
 	];
 	var date       = new Date ();
 	var day        = date.getDate ();
 	var monthIndex = date.getMonth ();
 	var year       = date.getFullYear ();
+	//FECHA
 	// Mapa
 	app.controller ( 'MapController' , function ( $scope ) {
 
@@ -268,7 +245,7 @@
 		map.mapTypes.set ( customMapTypeId , customMapType );
 		map.setMapTypeId ( customMapTypeId );
 	} );
-
+	// Mapa
 	// Contacto
 	app.controller ( 'ContactController' , function ( $scope ) {
 		$scope.message = 'Contact us! JK. This is just a demo.';
@@ -280,8 +257,8 @@
 	 **************************************************************************/
 	    // Informacion de Dispositivos.
 	var cities = [ {
-		city : 'Dispositivo ARDUINO-00X1' ,
-		desc : 'Serie: 343675, Modelo: AFDF34' ,
+		city : 'Estación ITD ' ,
+		desc : 'Serie:UPIDET, Modelo:1.0' ,
 		lat  : 24.016838 ,
 		long : - 104.651730
 	} ];
