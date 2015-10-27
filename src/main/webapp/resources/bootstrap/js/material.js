@@ -69,73 +69,73 @@
 				.filter ( ":notmdproc" )
 				.data ( "mdproc" , true )
 				.each ( function () {
-					var $this = $ ( this );
+				var $this = $ ( this );
 
-					if ( ! $ ( this ).attr ( "data-hint" ) && ! $this.hasClass ( "floating-label" ) ) {
-						return;
-					}
-					$this.wrap ( "<div class=form-control-wrapper></div>" );
-					$this.after ( "<span class=material-input></span>" );
+				if ( ! $ ( this ).attr ( "data-hint" ) && ! $this.hasClass ( "floating-label" ) ) {
+					return;
+				}
+				$this.wrap ( "<div class=form-control-wrapper></div>" );
+				$this.after ( "<span class=material-input></span>" );
 
-					// Add floating label if required
-					if ( $this.hasClass ( "floating-label" ) ) {
-						var placeholder = $this.attr ( "placeholder" );
-						$this.attr ( "placeholder" , null ).removeClass ( "floating-label" );
-						$this.after ( "<div class=floating-label>" + placeholder + "</div>" );
-					}
+				// Add floating label if required
+				if ( $this.hasClass ( "floating-label" ) ) {
+					var placeholder = $this.attr ( "placeholder" );
+					$this.attr ( "placeholder" , null ).removeClass ( "floating-label" );
+					$this.after ( "<div class=floating-label>" + placeholder + "</div>" );
+				}
 
-					// Add hint label if required
-					if ( $this.attr ( "data-hint" ) ) {
-						$this.after ( "<div class=hint>" + $this.attr ( "data-hint" ) + "</div>" );
-					}
+				// Add hint label if required
+				if ( $this.attr ( "data-hint" ) ) {
+					$this.after ( "<div class=hint>" + $this.attr ( "data-hint" ) + "</div>" );
+				}
 
-					// Set as empty if is empty (damn I must improve this...)
-					if ( $this.val () === null || $this.val () == "undefined" || $this.val () === "" ) {
-						$this.addClass ( "empty" );
-					}
+				// Set as empty if is empty (damn I must improve this...)
+				if ( $this.val () === null || $this.val () == "undefined" || $this.val () === "" ) {
+					$this.addClass ( "empty" );
+				}
 
-					// Support for file input
-					if ( $this.parent ().next ().is ( "[type=file]" ) ) {
-						$this.parent ().addClass ( "fileinput" );
-						var $input = $this.parent ().next ().detach ();
-						$this.after ( $input );
-					}
-				} );
+				// Support for file input
+				if ( $this.parent ().next ().is ( "[type=file]" ) ) {
+					$this.parent ().addClass ( "fileinput" );
+					var $input = $this.parent ().next ().detach ();
+					$this.after ( $input );
+				}
+			} );
 
 			$ ( document )
 				.on ( "change" , ".checkbox input[type=checkbox]" , function () { $ ( this ).blur (); } )
 				.on ( "keydown paste" , ".form-control" , function ( e ) {
-					if ( _isChar ( e ) ) {
-						$ ( this ).removeClass ( "empty" );
-					}
-				} )
+				if ( _isChar ( e ) ) {
+					$ ( this ).removeClass ( "empty" );
+				}
+			} )
 				.on ( "keyup change" , ".form-control" , function () {
-					var $this = $ ( this );
-					if ( $this.val () === "" && (typeof $this[ 0 ].checkValidity != "undefined" && $this[ 0 ].checkValidity ()) ) {
-						$this.addClass ( "empty" );
-					} else {
-						$this.removeClass ( "empty" );
-					}
-				} )
+				var $this = $ ( this );
+				if ( $this.val () === "" && (typeof $this[ 0 ].checkValidity != "undefined" && $this[ 0 ].checkValidity ()) ) {
+					$this.addClass ( "empty" );
+				} else {
+					$this.removeClass ( "empty" );
+				}
+			} )
 				.on ( "focus" , ".form-control-wrapper.fileinput" , function () {
-					$ ( this ).find ( "input" ).addClass ( "focus" );
-				} )
+				$ ( this ).find ( "input" ).addClass ( "focus" );
+			} )
 				.on ( "blur" , ".form-control-wrapper.fileinput" , function () {
-					$ ( this ).find ( "input" ).removeClass ( "focus" );
-				} )
+				$ ( this ).find ( "input" ).removeClass ( "focus" );
+			} )
 				.on ( "change" , ".form-control-wrapper.fileinput [type=file]" , function () {
-					var value = "";
-					$.each ( $ ( this )[ 0 ].files , function ( i , file ) {
-						value += file.name + ", ";
-					} );
-					value     = value.substring ( 0 , value.length - 2 );
-					if ( value ) {
-						$ ( this ).prev ().removeClass ( "empty" );
-					} else {
-						$ ( this ).prev ().addClass ( "empty" );
-					}
-					$ ( this ).prev ().val ( value );
+				var value = "";
+				$.each ( $ ( this )[ 0 ].files , function ( i , file ) {
+					value += file.name + ", ";
 				} );
+				value     = value.substring ( 0 , value.length - 2 );
+				if ( value ) {
+					$ ( this ).prev ().removeClass ( "empty" );
+				} else {
+					$ ( this ).prev ().addClass ( "empty" );
+				}
+				$ ( this ).prev ().val ( value );
+			} );
 		} ,
 		"ripples"      : function ( selector ) {
 			$ ( (selector) ? selector : this.options.withRipples ).ripples ();
@@ -159,18 +159,18 @@
 			var focused;
 			$ ( document )
 				.on ( "focus" , "input" , function () {
-					var $inputs = $ ( this ).parents ( "form" ).find ( "input" ).not ( "[type=file]" );
-					focused     = setInterval ( function () {
-						$inputs.each ( function () {
-							if ( $ ( this ).val () !== $ ( this ).attr ( "value" ) ) {
-								$ ( this ).trigger ( "change" );
-							}
-						} );
-					} , 100 );
-				} )
+				var $inputs = $ ( this ).parents ( "form" ).find ( "input" ).not ( "[type=file]" );
+				focused     = setInterval ( function () {
+					$inputs.each ( function () {
+						if ( $ ( this ).val () !== $ ( this ).attr ( "value" ) ) {
+							$ ( this ).trigger ( "change" );
+						}
+					} );
+				} , 100 );
+			} )
 				.on ( "blur" , "input" , function () {
-					clearInterval ( focused );
-				} );
+				clearInterval ( focused );
+			} );
 		} ,
 		"init"         : function () {
 			if ( $.fn.ripples && this.options.ripples ) {

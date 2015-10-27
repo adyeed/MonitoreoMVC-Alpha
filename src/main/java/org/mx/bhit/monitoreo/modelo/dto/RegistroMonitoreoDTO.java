@@ -1,16 +1,16 @@
 /**
  * ResgritoMonitoreoDTO.java
- * Fecha de creación: 14/10/2015, 22:33:18
- *
- * Copyright (c) 2015 Instituto Federal Electoral. Dirección
+ * Fecha de creaciï¿½n: 14/10/2015, 22:33:18
+ * <p>
+ * Copyright (c) 2015 Instituto Federal Electoral. Direcciï¿½n
  * Ejecutiva del Registro Federal de Electores.
- * Periférico Sur 239, México, D.F., C.P. 01010.
+ * Perifï¿½rico Sur 239, Mï¿½xico, D.F., C.P. 01010.
  * Todos los derechos reservados.
- *
- * Este software es información confidencial, propiedad del
- * Instituto Federal Electoral. Esta información confidencial
- * no deberá ser divulgada y solo se podrá utilizar de acuerdo
- * a los términos que determine el propio Instituto.
+ * <p>
+ * Este software es informaciï¿½n confidencial, propiedad del
+ * Instituto Federal Electoral. Esta informaciï¿½n confidencial
+ * no deberï¿½ ser divulgada y solo se podrï¿½ utilizar de acuerdo
+ * a los tï¿½rminos que determine el propio Instituto.
  */
 
 package org.mx.bhit.monitoreo.modelo.dto;
@@ -18,7 +18,7 @@ package org.mx.bhit.monitoreo.modelo.dto;
 /**
  * TODO [Agregar documentacion de la clase]
  *
- * @author Orlando Ramos Galván (orlandoa.ramos@outlook.com)
+ * @author Orlando Ramos Galvï¿½n (orlandoa.ramos@outlook.com)
  * @version 1.0
  * @since SIIRFE 5.10
  */
@@ -40,6 +40,7 @@ public class RegistroMonitoreoDTO {
 	public String getMensaje() {
 		return mensaje;
 	}
+
 	/**
 	 * @param mensaje
 	 *          parametro mensaje a actualizar
@@ -48,6 +49,7 @@ public class RegistroMonitoreoDTO {
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
+
 	/**
 	 * @return el atributo idRegistro
 	 */
@@ -55,6 +57,7 @@ public class RegistroMonitoreoDTO {
 	public int getIdRegistro() {
 		return idRegistro;
 	}
+
 	/**
 	 * @param idRegistro
 	 *          parametro idRegistro a actualizar
@@ -63,6 +66,7 @@ public class RegistroMonitoreoDTO {
 	public void setIdRegistro(int idRegistro) {
 		this.idRegistro = idRegistro;
 	}
+
 	/**
 	 * @return el atributo fecha
 	 */
@@ -70,6 +74,7 @@ public class RegistroMonitoreoDTO {
 	public String getFecha() {
 		return fecha;
 	}
+
 	/**
 	 * @param fecha
 	 *          parametro fecha a actualizar
@@ -78,6 +83,7 @@ public class RegistroMonitoreoDTO {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+
 	/**
 	 * @return el atributo hora
 	 */
@@ -85,6 +91,7 @@ public class RegistroMonitoreoDTO {
 	public String getHora() {
 		return hora;
 	}
+
 	/**
 	 * @param hora
 	 *          parametro hora a actualizar
@@ -93,6 +100,7 @@ public class RegistroMonitoreoDTO {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+
 	/**
 	 * @return el atributo variableID
 	 */
@@ -100,6 +108,7 @@ public class RegistroMonitoreoDTO {
 	public int getVariableID() {
 		return variableID;
 	}
+
 	/**
 	 * @param variableID
 	 *          parametro variableID a actualizar
@@ -108,6 +117,7 @@ public class RegistroMonitoreoDTO {
 	public void setVariableID(int variableID) {
 		this.variableID = variableID;
 	}
+
 	/**
 	 * @return el atributo valor
 	 */
@@ -115,6 +125,7 @@ public class RegistroMonitoreoDTO {
 	public double getValor() {
 		return valor;
 	}
+
 	/**
 	 * @param valor
 	 *          parametro valor a actualizar
@@ -123,6 +134,7 @@ public class RegistroMonitoreoDTO {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
+
 	/**
 	 * @return el atributo idDispositivo
 	 */
@@ -130,6 +142,7 @@ public class RegistroMonitoreoDTO {
 	public int getIdDispositivo() {
 		return idNodo;
 	}
+
 	/**
 	 * @param idDispositivo
 	 *          parametro idDispositivo a actualizar
@@ -138,6 +151,7 @@ public class RegistroMonitoreoDTO {
 	public void setIdDispositivo(int idNodo) {
 		this.idNodo = idNodo;
 	}
+
 	/**
 	 * @return el atributo idEstatus
 	 */
@@ -145,6 +159,7 @@ public class RegistroMonitoreoDTO {
 	public int getIdEstatus() {
 		return idEstatus;
 	}
+
 	/**
 	 * @param idEstatus
 	 *          parametro idEstatus a actualizar
@@ -154,7 +169,7 @@ public class RegistroMonitoreoDTO {
 		this.idEstatus = idEstatus;
 	}
 	/*
-	 * La documentación de este método se encuentra en la clase o interface que lo declara
+	 * La documentaciï¿½n de este mï¿½todo se encuentra en la clase o interface que lo declara
 	 * (non-Javadoc)
 	 *
 	 * @see java.lang.Object#toString()
@@ -163,8 +178,8 @@ public class RegistroMonitoreoDTO {
 	@Override
 	public String toString() {
 		return "RegistroMonitoreoDTO [idRegistro=" + idRegistro + ", fecha=" + fecha + ", hora="
-		    + hora + ", variableID=" + variableID + ", valor=" + valor + ", idDispositivo="
-		    + idNodo + ", idEstatus=" + idEstatus + "]";
+				+ hora + ", variableID=" + variableID + ", valor=" + valor + ", idDispositivo="
+				+ idNodo + ", idEstatus=" + idEstatus + "]";
 	}
 
 }

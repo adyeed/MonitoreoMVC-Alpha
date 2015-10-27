@@ -99,10 +99,10 @@
 			$ripple
 				.addClass ( "ripple" )
 				.css ( {
-					"left"             : relX ,
-					"top"              : relY ,
-					"background-color" : rippleColor
-				} );
+				"left"             : relX ,
+				"top"              : relY ,
+				"background-color" : rippleColor
+			} );
 
 
 			/**
@@ -288,11 +288,11 @@
 		if ( self.hasTransitionSupport () ) {
 			$ripple
 				.css ( {
-					"-ms-transform"     : "scale(" + size + ")" ,
-					"-moz-transform"    : "scale(" + size + ")" ,
-					"-webkit-transform" : "scale(" + size + ")" ,
-					"transform"         : "scale(" + size + ")"
-				} )
+				"-ms-transform"     : "scale(" + size + ")" ,
+				"-moz-transform"    : "scale(" + size + ")" ,
+				"-webkit-transform" : "scale(" + size + ")" ,
+				"transform"         : "scale(" + size + ")"
+			} )
 				.addClass ( "ripple-on" )
 				.data ( "animating" , "on" )
 				.data ( "mousedown" , "on" );

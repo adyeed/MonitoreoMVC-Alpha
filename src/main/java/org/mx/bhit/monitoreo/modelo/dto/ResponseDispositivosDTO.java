@@ -1,12 +1,12 @@
 /**
  * ResponseDispositivosDTO.java
  * Fecha de creaci�n: 18/10/2015, 0:41:58
- *
+ * <p>
  * Copyright (c) 2015 Instituto Federal Electoral. Direcci�n
  * Ejecutiva del Registro Federal de Electores.
  * Perif�rico Sur 239, M�xico, D.F., C.P. 01010.
  * Todos los derechos reservados.
- *
+ * <p>
  * Este software es informaci�n confidencial, propiedad del
  * Instituto Federal Electoral. Esta informaci�n confidencial
  * no deber� ser divulgada y solo se podr� utilizar de acuerdo
@@ -15,9 +15,9 @@
 
 package org.mx.bhit.monitoreo.modelo.dto;
 
-import java.util.List;
-
 import org.mx.bhit.monitoreo.model.Port;
+
+import java.util.List;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -29,6 +29,8 @@ import org.mx.bhit.monitoreo.model.Port;
 public class ResponseDispositivosDTO {
 
 	private List<Port> puertos;
+	private String mensaje;
+
 	/**
 	 * @return el atributo mensaje
 	 */
@@ -45,8 +47,6 @@ public class ResponseDispositivosDTO {
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
-
-	private String mensaje;
 
 	/**
 	 * @return el atributo dispositivos

@@ -1,8 +1,5 @@
 package org.mx.bhit.monitoreo.presentacion.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.mx.bhit.monitoreo.api.service.ConsultaServiceImpl;
 import org.mx.bhit.monitoreo.api.service.MainFillerServiceImpl;
 import org.mx.bhit.monitoreo.modelo.dto.OnDTO;
@@ -11,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -38,7 +38,9 @@ public class MainController {
 	 *
 	 */
 	@RequestMapping(value = "/on", method = RequestMethod.POST)
-	public @ResponseBody List<RegistroMonitoreoDTO> getFillerOn() {
+	public
+	@ResponseBody
+	List<RegistroMonitoreoDTO> getFillerOn() {
 		List<RegistroMonitoreoDTO> regristroMaster = new ArrayList<RegistroMonitoreoDTO>();
 		RegistroMonitoreoDTO registroMonitoreoDTO = new RegistroMonitoreoDTO();
 
@@ -50,7 +52,8 @@ public class MainController {
 			mainFiller.onFiller();
 			regristroMaster = consultaServiceImpl.getRegistro(registroMonitoreoDTO);
 		} catch (Exception e) {
-			regristroMaster.get(0).setMensaje("ERROR");;
+			regristroMaster.get(0).setMensaje("ERROR");
+			;
 			System.out.println("Error al iniciar la persistencia principal.");
 			e.printStackTrace();
 			return regristroMaster;
@@ -67,7 +70,9 @@ public class MainController {
 	 *
 	 */
 	@RequestMapping(value = "/text", method = RequestMethod.POST)
-	public @ResponseBody OnDTO text() {
+	public
+	@ResponseBody
+	OnDTO text() {
 		mainFiller = new MainFillerServiceImpl();
 		OnDTO onDTO = new OnDTO();
 		try {

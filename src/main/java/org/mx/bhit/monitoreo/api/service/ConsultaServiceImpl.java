@@ -15,14 +15,13 @@
 
 package org.mx.bhit.monitoreo.api.service;
 
-import java.util.List;
-
 import org.mx.bhit.monitoreo.api.dao.PortDAO;
 import org.mx.bhit.monitoreo.api.dao.PortDAOImpl;
 import org.mx.bhit.monitoreo.api.dao.RegistroMonitoreoDAOImpl;
+import org.mx.bhit.monitoreo.model.Port;
 import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
 
-import org.mx.bhit.monitoreo.model.Port;
+import java.util.List;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -59,7 +58,7 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 	@Override
 	public List<RegistroMonitoreoDTO> getRegistro(
-	    RegistroMonitoreoDTO responseRegistroMonitoreoDTO) {
+			RegistroMonitoreoDTO responseRegistroMonitoreoDTO) {
 		RegistroMonitoreoDAOImpl registroMonitoreoDAO = new RegistroMonitoreoDAOImpl();
 		return registroMonitoreoDAO.getRegistroMain(responseRegistroMonitoreoDTO);
 		// TODO [codificar el cuerpo del m�todo]

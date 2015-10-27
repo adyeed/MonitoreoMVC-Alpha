@@ -15,24 +15,18 @@
 
 package org.mx.bhit.monitoreo.api.service;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.StringTokenizer;
-
+import com.fazecast.jSerialComm.SerialPort;
 import org.mx.bhit.monitoreo.api.dao.RegistroMonitoreoDAOImpl;
 import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
 import org.mx.bhit.monitoreo.modelo.dto.VariableDTO;
 import org.mx.bhit.monitoreo.util.GeneralConstants;
 import org.springframework.stereotype.Service;
 
-import com.fazecast.jSerialComm.SerialPort;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.*;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -74,6 +68,90 @@ public class MainFillerServiceImpl implements MainFillerService {
 
 		return aux;
 	}
+
+	/**
+	 * @return
+	 * @throws SQLException
+	 */
+	@SuppressWarnings("resource")
+	public static StringBuffer llenadoPrincipal() throws SQLException {
+
+		StringBuffer linea = null;
+		SerialPort[] ports = SerialPort.getCommPorts();
+		int chosenPort;
+		SerialPort serialPort;
+		///
+		OutputStream outt;
+		InputStream in;
+
+		int i = 1;
+
+		for (SerialPort port : ports) {
+			System.out.println(i++ + ": " + port.getSystemPortName());
+		}
+
+		chosenPort = 1;
+		serialPort = ports[chosenPort - 1];
+
+		// if (serialPort.openPort()) {
+		serialPort.openPort();
+		// Si se encontro alguna comunicacion con puerto
+		serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
+		outt = serialPort.getOutputStream();
+		in = serialPort.getInputStream();
+
+		try {
+
+			linea = new StringBuffer();
+			// Estructura de control IF, iteracion de 10 ciclos para env�o
+			// de caracter a Arduino.
+			// for (int k = 0; k < 1; ++k) {
+			/**
+			 * Se envia el token de peticion.
+			 */
+			outt.write('#');
+			outt.close();
+			// Por cada ciclo se hace la instancia de una nueva linea.
+			linea = new StringBuffer();
+			// Inicia el llenado de la cadena de caracteres.
+			/**
+			 * EL DO WHILE ESTA COMENTADO PARA EVITAR UN CICLO INFITNIVO. HACER PRUEBAS SOLO CON
+			 * ARUDINO CONECTADO.
+			 */
+			do {
+
+				linea.append((char) in.read());
+				// System.out.println("Leyendo INFORMACION DEL ARUDINO");
+				// System.out.println(linea);
+
+				// Mientras la linea no contenga un salto de linea
+				// seguira entrando informacion.
+			} while (!linea.toString().contains("\n"));
+			// cuando el salto de linea es encontrado se cierra el canal
+			// de entrada de datos.
+			in.close();
+			serialPort.closePort();
+			// System.out.println(linea);
+			// }
+		} catch (Exception e) {
+			System.out
+					.println("ERROR DE COMUNICACION CON EL ARDUINO: " + serialPort.getSystemPortName());
+			e.printStackTrace();
+		} finally {
+			try {
+				outt.close();
+				in.close();
+				serialPort.closePort();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		// } //if end
+
+		return linea;
+	}// Fin de metodo;
+	// Fin de metodo;
 
 	@Override
 	public String onFiller() {
@@ -181,7 +259,7 @@ public class MainFillerServiceImpl implements MainFillerService {
 		segundos = calendario.get(Calendar.SECOND);
 
 		horaText = Integer.toString(hora) + ":" + Integer.toString(minutos) + ":"
-		    + Integer.toString(segundos);
+				+ Integer.toString(segundos);
 
 		System.out.println(fechaText);
 		System.out.println(horaText);
@@ -223,89 +301,5 @@ public class MainFillerServiceImpl implements MainFillerService {
 		} // TODO [codificar el cuerpo del m�todo]
 		return response;
 
-	}// Fin de metodo;
-	 // Fin de metodo;
-
-	/**
-	 * @return
-	 * @throws SQLException
-	 */
-	@SuppressWarnings("resource")
-	public static StringBuffer llenadoPrincipal() throws SQLException {
-
-		StringBuffer linea = null;
-		SerialPort[] ports = SerialPort.getCommPorts();
-		int chosenPort;
-		SerialPort serialPort;
-		///
-		OutputStream outt;
-		InputStream in;
-
-		int i = 1;
-
-		for (SerialPort port : ports) {
-			System.out.println(i++ + ": " + port.getSystemPortName());
-		}
-
-		chosenPort = 1;
-		serialPort = ports[chosenPort - 1];
-
-		// if (serialPort.openPort()) {
-		serialPort.openPort();
-		// Si se encontro alguna comunicacion con puerto
-		serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
-		outt = serialPort.getOutputStream();
-		in = serialPort.getInputStream();
-
-		try {
-
-			linea = new StringBuffer();
-			// Estructura de control IF, iteracion de 10 ciclos para env�o
-			// de caracter a Arduino.
-			// for (int k = 0; k < 1; ++k) {
-			/**
-			 * Se envia el token de peticion.
-			 */
-			outt.write('#');
-			outt.close();
-			// Por cada ciclo se hace la instancia de una nueva linea.
-			linea = new StringBuffer();
-			// Inicia el llenado de la cadena de caracteres.
-			/**
-			 * EL DO WHILE ESTA COMENTADO PARA EVITAR UN CICLO INFITNIVO. HACER PRUEBAS SOLO CON
-			 * ARUDINO CONECTADO.
-			 */
-			do {
-
-				linea.append((char) in.read());
-				// System.out.println("Leyendo INFORMACION DEL ARUDINO");
-				// System.out.println(linea);
-
-				// Mientras la linea no contenga un salto de linea
-				// seguira entrando informacion.
-			} while (!linea.toString().contains("\n"));
-			// cuando el salto de linea es encontrado se cierra el canal
-			// de entrada de datos.
-			in.close();
-			serialPort.closePort();
-			// System.out.println(linea);
-			// }
-		} catch (Exception e) {
-			System.out
-			    .println("ERROR DE COMUNICACION CON EL ARDUINO: " + serialPort.getSystemPortName());
-			e.printStackTrace();
-		} finally {
-			try {
-				outt.close();
-				in.close();
-				serialPort.closePort();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-		// } //if end
-
-		return linea;
 	}// Fin de metodo;
 }

@@ -1,12 +1,12 @@
 /**
  * RegistroMonitoreoDAO.java
  * Fecha de creaci�n: 14/10/2015, 23:52:19
- *
+ * <p>
  * Copyright (c) 2015 Instituto Federal Electoral. Direcci�n
  * Ejecutiva del Registro Federal de Electores.
  * Perif�rico Sur 239, M�xico, D.F., C.P. 01010.
  * Todos los derechos reservados.
- *
+ * <p>
  * Este software es informaci�n confidencial, propiedad del
  * Instituto Federal Electoral. Esta informaci�n confidencial
  * no deber� ser divulgada y solo se podr� utilizar de acuerdo
@@ -15,15 +15,15 @@
 
 package org.mx.bhit.monitoreo.api.dao;
 
+import org.mx.bhit.monitoreo.api.conn.UConnection;
+import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.mx.bhit.monitoreo.api.conn.UConnection;
-import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
-import org.springframework.stereotype.Repository;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -65,10 +65,10 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 
 //
 
-			if (rowsInserted > 0) {
-				System.out.println(rowsInserted + " rows was inserted successfully!");
+				if (rowsInserted > 0) {
+					System.out.println(rowsInserted + " rows was inserted successfully!");
 
-			}
+				}
 			}
 			// conn.close();
 		} catch (Exception e) {
@@ -83,7 +83,7 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 	@Override
 	public List<RegistroMonitoreoDTO> getRegistroMain(
 
-	    RegistroMonitoreoDTO responseRegistroMonitoreoDTO) {
+			RegistroMonitoreoDTO responseRegistroMonitoreoDTO) {
 		List<RegistroMonitoreoDTO> registros = new ArrayList<RegistroMonitoreoDTO>();
 		Connection conn = null;
 

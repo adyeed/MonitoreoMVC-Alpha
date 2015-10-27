@@ -1,12 +1,12 @@
 /**
  * QueryService.java
  * Fecha de creaci?n: 17/10/2015, 21:19:59
- *
+ * <p>
  * Copyright (c) 2015 Instituto Federal Electoral. Direcci?n
  * Ejecutiva del Registro Federal de Electores.
  * Perif?rico Sur 239, M?xico, D.F., C.P. 01010.
  * Todos los derechos reservados.
- *
+ * <p>
  * Este software es informaci?n confidencial, propiedad del
  * Instituto Federal Electoral. Esta informaci?n confidencial
  * no deber? ser divulgada y solo se podr? utilizar de acuerdo
@@ -15,11 +15,10 @@
 
 package org.mx.bhit.monitoreo.api.service;
 
-import java.util.List;
-
+import org.mx.bhit.monitoreo.model.Port;
 import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
 
-import org.mx.bhit.monitoreo.model.Port;
+import java.util.List;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -39,6 +38,6 @@ public interface ConsultaService {
 	 * @return
 	 */
 	public List<RegistroMonitoreoDTO> getRegistro(
-	    RegistroMonitoreoDTO resposneRegistroMonitoreoDTO);
+			RegistroMonitoreoDTO resposneRegistroMonitoreoDTO);
 
 }
