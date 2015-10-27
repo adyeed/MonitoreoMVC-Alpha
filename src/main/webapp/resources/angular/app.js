@@ -58,27 +58,49 @@
 
 								$scope.callAtInterval = function () {
 									$ ( "#writeData" ).css ( "color" , "white" );
-									// console.log("INCIA PETICION");
+									
 										$http ( {
 												method : 'POST' ,
 											url    : '/SpringMVC/rest/on'
 									} ).then ( function successCallback ( response ) {
 										if ( response.status == "200" ) {
-												console.log ( "azul" );
+// console.log ( "Insertando..." );
 												$ ( "#writeData" ).css ( "color" , "blue" );
-												// console.log(response.data.mensaje);
-													if ( response.data.mensaje == "ERROR" ) {
-														$ ( "#writeData" ).css ( "color" , "yellow" );
-														// console.log("amarillo");
-														}
+												variablesAmbientales = response.data;	
+// console.log(variablesAmbientales);
+												
+												if ( variablesAmbientales != 0 ) {
+													var renglon =
+														    '<table class="table">' +
+														    '<tr>' +
+														    '<td>Variable</td>' +
+														    '<td>Valor</td>' +
+														    '</tr>';
+													$.each ( variablesAmbientales , function ( i , item ) {
+														renglon +=
+															'<tr>' +
+															'<td id="idVar">' + nombreVariable ( variablesAmbientales[ i ].variableID ) + ' </td>' +
+															'<td id="valor">' + variablesAmbientales[ i ].valor + '</td>' +
+															'</tr>';
+													} )
+
+													renglon += '</table>';
+													
+													$ ( "#Variables" ).html( renglon );
+												}
 											}
-										// console.log("FIN DE PETICION");
-											$scope.data = response.data.mensaje;
+// variablesAmbientales = JSON.stringify(response.data) ;
+											
+											
+
+										
 									} , function errorCallback ( response ) {
 										console.log ( "rojo" );
 										$ ( "#writeData" ).css ( "color" , "red" );
-										// called asynchronously if an error occurs
-											// or server returns response with an error status.
+										// called asynchronously if an error
+										// occurs
+											// or server returns response with
+											// an error status.
 												$scope.data = response.data;
 									} );
 
@@ -86,7 +108,7 @@
 
 						$interval ( function () {
 								$scope.callAtInterval ();
-							} , 3109 );
+							} , 3000 );
 
 					} );
 		} );
@@ -98,8 +120,6 @@
 			$scope.callAtInterval = function () {
 				// /// Proceso
 				$ ( "#readData" ).css ( "color" , "white" );
-				console.log ( "Leyendo..." );
-				$ ( "#proceso" ).html ( "Proceso de peticion" );
 				// //////////////////////////////////////////
 				// AJAX
 				$http ( {
@@ -109,9 +129,7 @@
 
 					if ( response.status == "200" ) {
 						$ ( "#readData" ).css ( "color" , "blue" );
-						variablesAmbientales = angular.fromJson ( response.data );
-						console.log ( variablesAmbientales.length );
-						console.log ( variablesAmbientales );
+						console.log ( "Leyendo..." );									
 						if ( variablesAmbientales != 0 ) {
 							var renglon =
 								    '<table class="table">' +
@@ -122,17 +140,17 @@
 							$.each ( variablesAmbientales , function ( i , item ) {
 								renglon +=
 									'<tr>' +
-									'<td id="idVarTemp">' + nombreVariable ( variablesAmbientales[ i ].variableID ) + ' </td>' +
-									'<td id="valorTemp">' + variablesAmbientales[ i ].valor + '</td>' +
+									'<td id="idVar">' + nombreVariable ( variablesAmbientales[ i ].variableID ) + ' </td>' +
+									'<td id="valor">' + variablesAmbientales[ i ].valor + '</td>' +
 									'</tr>';
 							} )
 
 							renglon += '</table>';
 							console.log ( renglon );
-							$ ( "#Variables" ).html ( renglon );
+							$ ( "#Variables" ).html( renglon );
 
 						} else {
-							$ ( "#readData" ).css ( "color" , "yellow" );
+							$ ( "#readData" ).css( "color" , "yellow" );
 							// $ ( "#Variables" ).html (
 							// variablesAmbientales.length );
 						}
@@ -148,7 +166,7 @@
 
 			$interval ( function () {
 				$scope.callAtInterval ();
-			} , 3000 );
+			} , 5000 );
 
 		} );
 	} );
@@ -171,7 +189,7 @@
 		return nombreVariable;
 	}
 
-	//FECHA
+	// FECHA
 	var monthNames = [
 		"Enero" ,
 		"Febrero" ,
@@ -190,14 +208,14 @@
 	var day        = date.getDate ();
 	var monthIndex = date.getMonth ();
 	var year       = date.getFullYear ();
-	//FECHA
+	// FECHA
 	// Mapa
 	app.controller ( 'MapController' , function ( $scope ) {
 
 
 		/**
 		 * Configuracions de MAPA GOOGLE:
-		 *
+		 * 
 		 * @type {{zoom: number, center: google.maps.LatLng, mapTypeId: *}}
 		 */
 		var customMapType = new google.maps.StyledMapType (
@@ -233,7 +251,7 @@
 
 		/**
 		 * Objeto MAPA
-		 *
+		 * 
 		 * @type {google.maps.Map}
 		 */
 		var map = new google.maps.Map ( document.getElementById ( 'map' ) ,

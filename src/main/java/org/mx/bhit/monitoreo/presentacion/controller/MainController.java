@@ -1,16 +1,16 @@
 package org.mx.bhit.monitoreo.presentacion.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.mx.bhit.monitoreo.api.service.ConsultaServiceImpl;
 import org.mx.bhit.monitoreo.api.service.MainFillerServiceImpl;
 import org.mx.bhit.monitoreo.modelo.dto.OnDTO;
-import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -38,31 +38,25 @@ public class MainController {
 	 *
 	 */
 	@RequestMapping(value = "/on", method = RequestMethod.POST)
-	public
-	@ResponseBody
-	List<RegistroMonitoreoDTO> getFillerOn() {
-		List<RegistroMonitoreoDTO> regristroMaster = new ArrayList<RegistroMonitoreoDTO>();
-		RegistroMonitoreoDTO registroMonitoreoDTO = new RegistroMonitoreoDTO();
+	public @ResponseBody ModelAndView getFillerOn(HttpServletRequest request,
+	    HttpServletResponse response) {
 
+		String context = request.getContextPath();
+		System.out.println("Contexto----> " + context);
 		mainFiller = new MainFillerServiceImpl();
-		consultaServiceImpl = new ConsultaServiceImpl();
+
 		OnDTO onDTO = new OnDTO();
 
 		try {
 			mainFiller.onFiller();
-			regristroMaster = consultaServiceImpl.getRegistro(registroMonitoreoDTO);
+
 		} catch (Exception e) {
-			regristroMaster.get(0).setMensaje("ERROR");
-			;
+
 			System.out.println("Error al iniciar la persistencia principal.");
 			e.printStackTrace();
-			return regristroMaster;
-
 			// TODO: handle exception
-		} finally {
-			// System.out.println("CONTROLADOR DE REGISTROS..");
-			return regristroMaster;
 		}
+		return new ModelAndView("/rest/records");
 
 	}
 
@@ -70,9 +64,7 @@ public class MainController {
 	 *
 	 */
 	@RequestMapping(value = "/text", method = RequestMethod.POST)
-	public
-	@ResponseBody
-	OnDTO text() {
+	public @ResponseBody OnDTO text() {
 		mainFiller = new MainFillerServiceImpl();
 		OnDTO onDTO = new OnDTO();
 		try {
