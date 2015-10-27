@@ -53,7 +53,43 @@
 	} );
 
 	// Insert Record
+	app.controller ( 'InsertRecord' , function ( $scope , $interval , $http ) {
+				angular.element ( document ).ready ( function () {
 
+								$scope.callAtInterval = function () {
+									$ ( "#writeData" ).css ( "color" , "white" );
+									// console.log("INCIA PETICION");
+										$http ( {
+												method : 'POST' ,
+											url    : '/SpringMVC/rest/on'
+									} ).then ( function successCallback ( response ) {
+										if ( response.status == "200" ) {
+												console.log ( "azul" );
+												$ ( "#writeData" ).css ( "color" , "blue" );
+												// console.log(response.data.mensaje);
+													if ( response.data.mensaje == "ERROR" ) {
+														$ ( "#writeData" ).css ( "color" , "yellow" );
+														// console.log("amarillo");
+														}
+											}
+										// console.log("FIN DE PETICION");
+											$scope.data = response.data.mensaje;
+									} , function errorCallback ( response ) {
+										console.log ( "rojo" );
+										$ ( "#writeData" ).css ( "color" , "red" );
+										// called asynchronously if an error occurs
+											// or server returns response with an error status.
+												$scope.data = response.data;
+									} );
+
+								}
+
+						$interval ( function () {
+								$scope.callAtInterval ();
+							} , 3109 );
+
+					} );
+		} );
 
 // Get
 	app.controller ( 'GetRecordController' , function ( $scope , $interval , $http ) {
