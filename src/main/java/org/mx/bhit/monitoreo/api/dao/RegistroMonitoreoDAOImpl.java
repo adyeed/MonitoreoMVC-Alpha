@@ -15,15 +15,15 @@
 
 package org.mx.bhit.monitoreo.api.dao;
 
-import org.mx.bhit.monitoreo.api.conn.UConnection;
-import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
-import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.mx.bhit.monitoreo.api.conn.UConnection;
+import org.mx.bhit.monitoreo.modelo.dto.RegistroMonitoreoDTO;
+import org.springframework.stereotype.Repository;
 
 /**
  * TODO [Agregar documentacion de la clase]
@@ -63,7 +63,7 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 				int rowsInserted = statement.executeUpdate();
 				System.out.println(listRegistroMonitoreoDTO.get(i).getValor());
 
-//
+				//
 
 				if (rowsInserted > 0) {
 					System.out.println(rowsInserted + " rows was inserted successfully!");
@@ -83,7 +83,7 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 	@Override
 	public List<RegistroMonitoreoDTO> getRegistroMain(
 
-			RegistroMonitoreoDTO responseRegistroMonitoreoDTO) {
+	    RegistroMonitoreoDTO responseRegistroMonitoreoDTO) {
 		List<RegistroMonitoreoDTO> registros = new ArrayList<RegistroMonitoreoDTO>();
 		Connection conn = null;
 
@@ -131,7 +131,6 @@ public class RegistroMonitoreoDAOImpl implements RegistroMonitoreoDAO {
 
 			System.out.println("Conexion Creada de forma correcta");
 			responseRegistroMonitoreoDTO.setMensaje("Conexion Creada de forma correcta");
-			registros.add(responseRegistroMonitoreoDTO);
 
 		} catch (Exception e) {
 			try {
