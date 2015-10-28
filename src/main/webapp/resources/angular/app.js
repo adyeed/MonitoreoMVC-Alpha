@@ -22,12 +22,11 @@
 			templateUrl : 'pages/home.html',
 			controller : 'MainController'
 		})
-
 		// route for the about page
-		// .when('/monitoreo', {
-		// templateUrl : 'pages/charts.html',
-		// controller : 'MonitoreoController'
-		// })
+		 .when('/team', {
+		 templateUrl : 'pages/team.html',
+		 controller : 'TeamController'
+		 })
 		// route for the map page
 		.when('/mapa', {
 			templateUrl : 'pages/map.html',
@@ -37,7 +36,8 @@
 		.when('/contacto', {
 			templateUrl : 'pages/contacto.html',
 			controller : 'ContactController'
-		}).when('/equipo', {
+		})
+			.when('/equipo', {
 			templateUrl : 'pages/equipo.html',
 			controller : 'TeamController'
 		});
@@ -50,6 +50,16 @@
 	// Main
 	app.controller('MainController', function($scope) {
 		$scope.message = 'Sistema de Monitoreo Ambiental'
+	});
+	//
+	// Team
+	app.controller('TeamController', function($scope) {
+		this.members = "members":[
+	    {"name":"John", "title":"Doe"}, 
+	    {"name":"Anna", "title":"Smith"}, 
+	    {"name":"Peter","title":"Jones"}
+	]
+			
 	});
 
 	// Insert Record

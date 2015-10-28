@@ -42,13 +42,6 @@ body, html {
 	height: 100%;
 	margin: 0;
 }
-
-/* <
-		/* .google-map { */
-/* 	height: 100%; */
-/* } */
--->
-*
 </style>
 
 </head>
@@ -75,11 +68,11 @@ body, html {
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav navbar ">
-				<li class="sidebar-brand"><a href="#">Bienvenido</a></li>
-				<li><a href="#/">Home</a></li>
-				<li><a href="#mapa">Dispositivos</a></li>
-				<li><a href="#contacto">Contacto</a></li>
-				<li><a href="#equipo"></a></li>
+				<li class="sidebar-brand"><a href="#"><small>Bienvenido</small></a></li>
+				<li><a href="#/">Inicio</a></li>
+				<li><a href="#mapa">Monitoreo</a></li>
+				<li><a href="#team">Equipo</a></li>
+				<li><a href="#"></a></li>
 				<li><a href="#"></a></li>
 				<li><a href="#"></a></li>
 				<li><a href="#"></a></li>
@@ -89,7 +82,7 @@ body, html {
 		<!-- /#sidebar-wrapper -->
 		<!--Contenido -->
 		<div id="page-content-wrapper">
-			<div ng-view></div>
+			<div id="Content" ng-view></div>
 			<div ng-controller="InsertRecord as insert"></div>
 			<!-- 			<div ng-controller="GetRecordController as read"></div> -->
 		</div>
@@ -117,15 +110,15 @@ body, html {
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7vYxE0ehyZUtpMfSmXdhenSmcFUmkExo"></script>
 	<script type="text/javascript" src="resources/angular/angular.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery-2.1.3.min.js">
-    $ ( document ).ready ( function () {
-		 $.material.init ();
-	} );
+    $(document).ready(function () {
+        $.material.init();
+    });
 </script>
 	<script>
-    $ ( "#menu-toggle" ).click ( function ( e ) {
-		 e.preventDefault ();
-		 $ ( "#wrapper" ).toggleClass ( "toggled" );
-	} );
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 </script>
 	<script type="text/javascript"
 		src="resources/bootstrap/bootstrap.min.js"></script>
