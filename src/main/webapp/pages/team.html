@@ -1,0 +1,27 @@
+<div class="container-fluid">
+
+	<div class="row">
+		<div id="Content" class="col-lg-8"
+			ng-controller="TeamController as team">
+			<div class="row" ng-repeat="member in team.members">
+				<div class="col-lg-4">
+					<div id="foto">
+						<img id="profile" ng-src="{{member.images[0]}}" alt="Description" />
+					</div>
+					<div id="description">{{member.name}}</div>
+					<div class="social">
+						<table>
+							<tr>
+								<td><img id="icon" ng-src="{{member.images[1]}}"
+									alt="Description" /></td>
+								<td><img id="icon" ng-src="{{member.images[2]}}"
+									alt="Description" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
