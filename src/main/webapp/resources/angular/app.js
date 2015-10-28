@@ -54,11 +54,11 @@
 	//
 	// Team
 	app.controller('TeamController', function($scope) {
-		this.members = "members":[
-	    {"name":"John", "title":"Doe"}, 
-	    {"name":"Anna", "title":"Smith"}, 
-	    {"name":"Peter","title":"Jones"}
-	]
+		this.members = [
+	    {"name":"Eddy", "title":"Doe",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}, 
+	    {"name":"Anna", "title":"Smith",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}, 
+	    {"name":"Peter","title":"Jones",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}
+	];
 			
 	});
 

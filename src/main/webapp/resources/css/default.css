@@ -63,3 +63,12 @@ a:link:hover, a:visited:hover {
 	height: 500px;
 	width: 100%;
 }
+
+#profile {
+	width: 140px;
+	height: 180px;
+}
+#icon {
+	width: 25px;
+	height: 25px;
+}
