@@ -6,69 +6,76 @@
  * http://java.net/projects/javaeetutorial/pages/BerkeleyLicense
  */
 body {
-	background-color: #ffffff;
-	font-size: 12px;
-	font-family: Verdana, "Verdana CE", Arial, "Arial CE",
-		"Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-	color: #000000;
-	margin: 10px;
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE", Arial, "Arial CE",
+    "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;
+    margin: 10px;
 }
 
 h1 {
-	font-family: Arial, "Arial CE", "Lucida Grande CE", lucida,
-		"Helvetica CE", sans-serif;
-	border-bottom: 1px solid #AFAFAF;
-	font-size: 16px;
-	font-weight: bold;
-	margin: 0px;
-	padding: 0px;
-	color: #D20005;
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida,
+    "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
 }
 
 a:link, a:visited {
-	color: #045491;
-	font-weight: bold;
-	text-decoration: none;
+    color: #045491;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 a:link:hover, a:visited:hover {
-	color: #045491;
-	font-weight: bold;
-	text-decoration: underline;
+    color: #045491;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .demo-card-wide.mdl-card {
-	width: auto;
+    width: auto;
 }
 
-.demo-card-wide>.mdl-card__title {
-	color: #ffffff;
-	height: 176px;
-	/* 	background: url('../assets/demos/welcome_card.jpg') center/cover; */
+.demo-card-wide > .mdl-card__title {
+    color: #ffffff;
+    height: 176px;
+    /* 	background: url('../assets/demos/welcome_card.jpg') center/cover; */
 }
 
-.demo-card-wide>.mdl-card__menu {
-	color: #ffffff;
+.demo-card-wide > .mdl-card__menu {
+    color: #ffffff;
 }
 
 .angular-google-map-container {
-	height: 400px;
+    height: 400px;
 }
 
 #menu {
-	float: left;
+    float: left;
 }
 
 #Content {
-	height: 500px;
-	width: 100%;
+    height: 500px;
+    width: 100%;
 }
 
 #profile {
-	width: 140px;
-	height: 180px;
+    width: 140px;
+    height: 180px;
+    border-radius: 6px;
 }
-#icon {
-	width: 25px;
-	height: 25px;
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+.teamCon{
+    width: 20%;
+    height: auto;
 }

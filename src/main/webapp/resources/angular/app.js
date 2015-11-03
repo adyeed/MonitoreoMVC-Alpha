@@ -54,12 +54,12 @@
 	//
 	// Team
 	app.controller('TeamController', function($scope) {
-		this.members = [
-	    {"name":"Eddy", "title":"Doe",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}, 
-	    {"name":"Anna", "title":"Smith",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}, 
-	    {"name":"Peter","title":"Jones",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}
+		$scope.members = [
+	    {"name":"Eddy", "title":"Programador",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]},
+	    {"name":"Orlando", "title":"Programador",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]},
+	    {"name":"Yesic","title":"DiseÃ±o Web",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}
 	];
-			
+
 	});
 
 	// Insert Record
@@ -159,7 +159,7 @@
 // });
 // });
 	// //// Fin de Get
-	
+
 	/**
 	 * Metodo que asigna el nombre a las variables de acuerdo a su ID.
 	 */
@@ -180,7 +180,7 @@
 		}
 		return nombreVariable;
 	}
-	// Fin de método.
+	// Fin de mï¿½todo.
 
 	// CONFIGURACIONES DE FECHA
 	var monthNames = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
@@ -195,17 +195,17 @@
 	app.controller('MapController',	function($scope) {
 	/**
 	 * Configuracions de MAPA GOOGLE:
-	 * 
+	 *
 	 * @type {{zoom: number, center: google.maps.LatLng, mapTypeId: *}}
 	 */
 		// ESTILOS DE MAPA
 			var customMapType = new google.maps.StyledMapType(
 				[
-				 {"featureType" : "landscape","stylers" : [ {"visibility" : "on"}, 
+				 {"featureType" : "landscape","stylers" : [ {"visibility" : "on"},
 				                                            {"invert_lightness" : true},
 			     {"weight" : 0.5	},
 			     {"color" : "#3a8080"},
-			     {"hue" : "#3bff00"} 
+			     {"hue" : "#3bff00"}
 			    ]}],
 			     { name : 'Custom Style'});
 			var customMapTypeId = 'custom_style';
@@ -228,7 +228,7 @@
 
 	/**
 	 * Objeto MAPA
-	 * 
+	 *
 	 * @type {google.maps.Map}
 	 */
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -269,8 +269,8 @@
 		map.setMapTypeId(customMapTypeId);
 		});
 	// Fin de controlador MAPA.
-	
-	
+
+
 	// Contacto
 	app.controller('ContactController', function($scope) {
 		$scope.message = 'Contact us! JK. This is just a demo.';
