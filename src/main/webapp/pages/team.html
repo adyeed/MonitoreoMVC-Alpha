@@ -1,38 +1,40 @@
 
 <!-- Section: about -->
-<section id="about" class="home-section text-center">
-	<div class="heading-about">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow bounceInDown" data-wow-delay="0.4s">
-						<div class="section-heading">
-							<h2>About us</h2>
-							<i class="fa fa-2x fa-angle-down"></i>
+<section id="about" class="home-section text-center"
+	ng-controller="TeamController as team">
+	<!-- 	 -->
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<!-- 	<div class="heading-about"> -->
+	<!-- 		<div class="container"> -->
+	<!-- 			<div class="row"> -->
+	<!-- 				<div class="col-lg-8 col-lg-offset-1"> -->
+	<!-- 					<div class="wow bounceInDown" data-wow-delay="0.4s"> -->
+	<!-- 						<div class="section-heading"> -->
+	<!-- 							<h2 id="teamTitle">Equipo</h2> -->
+	<!-- 							<i class="fa fa-2x fa-angle-down"></i> -->
+
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 	<div class="container">
-
-		<div class="row">
-			<div class="col-lg-2 col-lg-offset-5">
-				<hr class="marginbot-50">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-6 col-sm-3 col-md-3">
+		<!-- 		<div class="row"> -->
+		<!-- 			<div class="col-lg-2 col-lg-offset-5"> -->
+		<!-- 				<hr class="marginbot-50"> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+		<div class="row top">
+			<div class="col-xs-6 col-sm-offset-1 col-sm-3 col-md-3">
 				<div class="wow bounceInUp" data-wow-delay="0.2s">
 					<div class="team boxed-grey">
 						<div class="inner">
-							<h5>Anna Hanaceck</h5>
-							<p class="subtitle">Pixel Crafter</p>
+							<h5>{{members[0].name}}</h5>
+							<p class="subtitle">{{members[0].title}}</p>
 							<div class="avatar">
-								<img src="img/team/1.jpg" alt=""
-									class="img-responsive img-circle" />
+								<img id="profile" ng-src="{{members[0].images[0]}}" alt=""
+									class="img-responsive" />
 							</div>
 						</div>
 					</div>
@@ -42,11 +44,11 @@
 				<div class="wow bounceInUp" data-wow-delay="0.5s">
 					<div class="team boxed-grey">
 						<div class="inner">
-							<h5>Maura Daniels</h5>
-							<p class="subtitle">Ruby on Rails</p>
+							<h5>{{members[1].name}}</h5>
+							<p class="subtitle">{{members[1].title}}</p>
 							<div class="avatar">
-								<img src="img/team/2.jpg" alt=""
-									class="img-responsive img-circle" />
+								<img id="profile" ng-src="{{members[1].images[0]}}" alt=""
+									class="img-responsive" />
 							</div>
 
 						</div>
@@ -57,26 +59,11 @@
 				<div class="wow bounceInUp" data-wow-delay="0.8s">
 					<div class="team boxed-grey">
 						<div class="inner">
-							<h5>Jack Briane</h5>
-							<p class="subtitle">jQuery Ninja</p>
+							<h5>{{members[2].name}}</h5>
+							<p class="subtitle">{{members[2].title}}</p>
 							<div class="avatar">
-								<img src="img/team/3.jpg" alt=""
-									class="img-responsive img-circle" />
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-sm-3 col-md-3">
-				<div class="wow bounceInUp" data-wow-delay="1s">
-					<div class="team boxed-grey">
-						<div class="inner">
-							<h5>Tom Petterson</h5>
-							<p class="subtitle">Typographer</p>
-							<div class="avatar">
-								<img src="img/team/4.jpg" alt=""
-									class="img-responsive img-circle" />
+								<img id="profile" ng-src="{{members[2].images[0]}}" alt=""
+									class="img-responsive" />
 							</div>
 
 						</div>

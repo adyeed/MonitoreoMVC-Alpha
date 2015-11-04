@@ -19,10 +19,9 @@ html {
 
 h1, h2, h3, h4, h5, h6 {
 	text-transform: uppercase;
-    font-family: Montserrat, "Roboto", "Helvetica", "Arial", sans-serif;
+	font-family: Montserrat, "Roboto", "Helvetica", "Arial", sans-serif;
 	font-weight: 700;
 }
-
 
 p.lead {
 	font-weight: 600;
@@ -310,6 +309,10 @@ hr {
 	padding: 20px;
 }
 
+.team {
+	margin-top: 10%;
+}
+
 .team h5 {
 	margin-bottom: 10px;
 }
@@ -320,6 +323,7 @@ hr {
 
 .avatar {
 	margin-bottom: 20px;
+	margin-left: 40px;
 }
 
 .team-social {
@@ -409,6 +413,7 @@ hr {
 --- Services
 ============================ */
 .service-icon {
+	
 }
 
 #service {
@@ -681,8 +686,8 @@ Parallax
 	margin-top: 0;
 }
 
-.service-desc{
-
+.service-desc {
+	
 }
 
 /* Media queries */
