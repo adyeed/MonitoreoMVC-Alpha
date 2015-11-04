@@ -55,9 +55,9 @@
 	// Team
 	app.controller('TeamController', function($scope) {
 		$scope.members = [
-	    {"name":"Eddy", "title":"Programador",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]},
-	    {"name":"Orlando", "title":"Programador",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]},
-	    {"name":"Yesic","title":"Diseño Web",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}
+	    {"name":"Eddy Velazquez", "title":"El del Arduino",images : [ "./resources/img/eddy.jpg", "./resources/img/f.png", "./resources/img/t.png" ]},
+	    {"name":"Orlando Ramos", "title":"El que programa",images : [ "./resources/img/orlando.jpg", "./resources/img/f.png", "./resources/img/t.png" ]},
+	    {"name":"Yesic Luevanos","title":"El que dibuja",images : [ "./resources/img/yesic.jpg", "./resources/img/f.png", "./resources/img/t.png" ]}
 	];
 
 	});
